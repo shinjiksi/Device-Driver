@@ -25,6 +25,7 @@ static int booga_major =   BOOGA_MAJOR;
 static int booga_nr_devs = BOOGA_NR_DEVS;  
 module_param(booga_major, int, 0);
 module_param(booga_nr_devs, int, 0);
+
 MODULE_AUTHOR("Shinji Kasai");
 MODULE_LICENSE("GPL");
 
@@ -74,8 +75,7 @@ static int booga_open (struct inode *inode, struct file *filp)
 
 static int booga_release (struct inode *inode, struct file *filp)
 {
-		/* protects if multiple processes invoke the driver 
-		to prevent a race condition */
+		/* protects if multiple processes invoke the driver	to prevent a race condition */
 		if (down_interruptible (&booga_device_stats->sem))
 				return (-ERESTARTSYS);
 		booga_device_stats->num_close++;
@@ -96,8 +96,7 @@ static ssize_t booga_read (struct file *filp, char *buf, size_t count, loff_t *f
 		char* random_String;
 
 		printk("<1>booga_read invoked.\n");
-		/* protects if multiple processes invoke the driver with a semaphore
-			to prevent a race condition */
+		/* protects if multiple processes invoke the driver with a semaphore to prevent a race condition */
 		if (down_interruptible (&booga_device_stats->sem))
 				return (-ERESTARTSYS);
 
@@ -233,7 +232,7 @@ fail_malloc:
 
 static __exit  void booga_cleanup(void)
 {
-		remove_proc_entry("driver/booga", NULL /* parent dir */);
+		remove_proc_entry("driver/booga", NULL);
 		kfree(booga_device_stats);
 		unregister_chrdev(booga_major, "booga");
 		printk("<1> booga device driver version 4: unloaded\n");
@@ -242,5 +241,3 @@ static __exit  void booga_cleanup(void)
 
 module_init(booga_init);
 module_exit(booga_cleanup);
-
-/* vim: set ts=4: */

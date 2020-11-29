@@ -18,11 +18,11 @@ struct booga_stats {
 	long int num_read; 
 	long int num_write; 
 	long int num_close; 
-	long int device_num;	//current device
-	long int numOfStrings[4]; //num of phrases
-	long int numOfOpened[4]; //times open each booga driver
+	long int device_num;	
+	long int numOfStrings[4];
+	long int numOfOpened[4];
 	struct semaphore sem;
 };
 typedef struct booga_stats booga_stats;
 
-#endif /* __BOOGA_H */
+#endif
