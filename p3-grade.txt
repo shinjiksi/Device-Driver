@@ -1,0 +1,21 @@
+## Grade: 100/100
+
+- [10 pts] Compiling - 10, no warnings
+  - Each compiler warning will result in a 3 point deduction.
+  - You are not allowed to suppress warnings
+
+- [70 pts] Main driver - 70, works well.
+  - Supports read properly:    30/30
+  - Use of /dev/random:             10/10
+  - Writing acts like /dev/null:    10/10
+  - Kill process writing to booga3: 10/10
+  - Proper use of semaphores:       10/10
+
+- [10 pts] Get Booga Stats from /proc - 10, works well.
+  - Report on number bytes written/read: 5/5
+  - Report on strings :                  5/5
+
+- [10 pts] Documentation: - 10, clear and sufficient.
+  - Plan for testing:
+
+
